@@ -1,121 +1,325 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>🍱</title>
-        <link rel="stylesheet" href="css/style.css" />
-        <script src="https://unpkg.com/feather-icons"></script>
-    </head>
-    <body class="">
-        <button id="themeButton"><i id="bicon" data-feather="moon"></i></button>
-        <div class="container">
-            <div class="fblock">
-                <div class="clock">
-                    <div id="hour" class=""></div>
-                    <div id="separator" class=""></div>
-                    <div id="minutes" class=""></div>
-                </div>
-                <div id="greetings" class=""></div>
-            </div>
-            <div class="sblock">
-                <div class="sblock__date">
-                    <div id="month" class=""></div>
-                    <div id="day" class=""></div>
-                </div>
-                <div class="sblock__weather">
-                    <div class="weather-icon">
-                        <img src="icons/unknown.png" />
-                    </div>
-                    <div class="temperature-value">
-                        <p class="">- °<span class="g">c</span></p>
-                    </div>
-                    <div class="temperature-description">
-                        <p class=""></p>
-                    </div>
-                </div>
-            </div>
-            <div class="qlink">
-                <a
-                    href="https://github.com/"
-                    target="blank"
-                    class="qlink__link qlink__link-1"
-                >
-                    <i class="qlink__icon" data-feather="github"></i>
-                </a>
-                <a
-                    target="blank"
-                    href="https://outlook.live.com/mail/inbox"
-                    class="qlink__link qlink__link-2"
-                >
-                    <i class="qlink__icon" data-feather="mail"></i>
-                </a>
-                <a
-                    target="blank"
-                    href="https://calendar.google.com/calendar/r"
-                    class="qlink__link qlink__link-3"
-                >
-                    <i class="qlink__icon" data-feather="calendar"></i>
-                </a>
-                <a
-                    target="blank"
-                    href="https://flipboard.com/"
-                    class="qlink__link qlink__link-4"
-                >
-                    <i class="qlink__icon" data-feather="bookmark"></i>
-                </a>
-                <a href="https://columns.app" class="qlink__link qlink__link-5">
-                    <i class="qlink__icon" data-feather="trello"></i>
-                </a>
-                <a
-                    href="https://www.youtube.com/"
-                    class="qlink__link qlink__link-6"
-                >
-                    <i class="qlink__icon" data-feather="youtube"></i>
-                </a>
-            </div>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+// Responsive
+$bp-largest: 75em;
+$bp-large: 68.75em;
+$bp-medium: 56.25em;
+$bp-small: 37.5em;
+$bp-smallest: 31.25em;
 
-            <div class="card qlist qlist__1">
-                <i class="qlist__head" data-feather="music"></i>
-                <a
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    class="qlist__link"
-                    >Inspirational</a
-                >
-                <a
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    class="qlist__link"
-                    >Classic</a
-                >
-                <a
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    class="qlist__link"
-                    >Oldies</a
-                >
-                <a
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    class="qlist__link"
-                    >Rock</a
-                >
-            </div>
+:root {
+    // Fonts
+    --fsg: 150px;
+    --fsm: 85px;
+    --fss: 30px;
+    --fses: 18px;
 
-            <div class="card qlist qlist__2">
-                <i class="qlist__head" data-feather="coffee"></i>
-                <a href="https://www.linkedin.com" class="qlist__link"
-                    >LinkedIn</a
-                >
-                <a href="https://dribbble.com/" class="qlist__link">Dribble</a>
-                <a href="https://www.udemy.com/" class="qlist__link">Udemy</a>
-                <a href="https://www.figma.com/files/recent" class="qlist__link"
-                    >Figma</a
-                >
-            </div>
-        </div>
-        <script src="js/time.js"></script>
-        <script src="js/theme.js"></script>
-        <script src="js/greeting.js"></script>
-        <script src="js/weather.js"></script>
-        <script>
-            feather.replace();
-        </script>
-    </body>
-</html>
+    // C O L O R S
+
+    --accent: #186efdaa;
+
+    --bg: #f5f5f5;
+    --sbg: #e4e6e6;
+    --fg: #3a3a3a;
+
+    --imgbg: url(/img/wal.jpg);
+
+
+    --imgcol: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+
+    @media only screen and (max-width: $bp-large) {
+        --fsg: 100px;
+        --fsm: 65px;
+        --fss: 20px;
+    }
+}
+.darktheme {
+    --accent: #186efd60;
+    
+
+    --bg: #1e1f21;
+    --sbg: #2c2d31;
+    --fg: #d8dee9;
+
+    --imgcol: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+
+    transition: 0.2s ease-in-out;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg);
+
+    background-image: var(--imgcol), var(--imgbg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#themeButton {
+    position: absolute;
+    margin: 2em 2em 0 0;
+    right: 0;
+    top: 0;
+
+    color: var(--fg);
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 10px;
+    cursor: pointer;
+
+    background-color: #00000000;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.bicon {
+    width: 26px;
+    height: 26px;
+}
+.container {
+    width: 150vh;
+    height: 85vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    grid-gap: 30px;
+    padding: 20px;
+
+    @media only screen and (max-width: $bp-large) {
+        grid-gap: 20px;
+        padding: 40px;
+    }
+
+    & > * {
+        width: 100%;
+    }
+}
+
+.card {
+    box-shadow: 0 5px 7px rgba(#000000, 0.35);
+    border-radius: 5px;
+    background-color: var(--sbg);
+
+    &:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 0 10px 10px rgba(#000000, 0.35);
+    }
+}
+
+.fblock {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: $bp-large) {
+        grid-row: 1 / span 2;
+        grid-column: 1 / span 4;
+    }
+}
+
+.sblock {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    &__weather {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media only screen and (max-width: $bp-large) {
+        display: none;
+    }
+}
+
+.clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hour,
+#separator,
+#minutes {
+    font-size: var(--fsg);
+    font-weight: bolder;
+    color: var(--fg);
+}
+
+#month,
+#day {
+    font-size: var(--fsm);
+    font-weight: bold;
+    color: var(--fg);
+}
+#day {
+    margin-left: 20px;
+}
+
+#greetings {
+    font-size: var(--fses);
+    color: var(--fg);
+
+    @media only screen and (max-width: $bp-large) {
+        font-size: var(--fss);
+    }
+}
+
+.weather-icon img {
+    width: 80px;
+    height: 80px;
+}
+
+.temperature {
+    &-value p {
+        font-size: var(--fss);
+        font-weight: bolder;
+        margin-left: 15px;
+        color: var(--fg);
+    }
+    &-description p {
+        font-size: var(--fss);
+        margin-left: 15px;
+        color: var(--fg);
+    }
+}
+
+.qlink {
+    grid-row: 3 / span 2;
+    grid-column: 1 / span 2;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    grid-gap: 30px;
+    padding: 30px;
+
+    @media only screen and (max-width: $bp-large) {
+        grid-row: 3 / span 2;
+        grid-column: 1 / span 4;
+
+        grid-gap: 40px;
+        padding: 20px;
+    }
+
+    &__icon {
+        width: 26px;
+        height: 26px;
+        color: var(--fg);
+    }
+
+    &__link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--sbg);
+        width: 100%;
+        box-shadow: 0 5px 7px rgba(#000000, 0.35);
+        border-radius: 5px;
+        &-1 {
+            grid-row: 1;
+            grid-column: 1;
+        }
+        &-2 {
+            grid-row: 1;
+            grid-column: 2;
+        }
+        &-3 {
+            grid-row: 2;
+            grid-column: 1;
+        }
+        &-4 {
+            grid-row: 2;
+            grid-column: 2;
+        }
+        &-5 {
+            grid-row: 1;
+            grid-column: 3;
+        }
+        &-6 {
+            grid-row: 2;
+            grid-column: 3;
+        }
+
+        &:hover {
+            background-color: var(--accent);
+            transform: translateY(-0.2rem);
+
+            box-shadow: 0 10px 10px rgba(#000000, 0.35);
+
+            & svg {
+                stroke: var(--fg);
+            }
+        }
+    }
+}
+
+.qlist {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media only screen and (max-width: $bp-large) {
+        display: none;
+    }
+
+    &__1 {
+        grid-column: 3;
+        grid-row: 3 / span 2;
+    }
+    &__2 {
+        grid-column: 4;
+        grid-row: 3 / span 2;
+    }
+    &__head {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        width: 30px;
+        color: var(--fg);
+        height: 30px;
+    }
+    &__link {
+        text-decoration: none;
+        font-size: var(--fses);
+        color: var(--fg);
+        margin-top: 1px;
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-weight: bold;
+
+        &:hover {
+            background-color: var(--accent);
+            color: var(--fg);
+        }
+    }
+}
